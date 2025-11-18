@@ -16,7 +16,7 @@ services:
        - ./config/traefik.yml:/etc/traefik/traefik.yml:ro        # the traefik config file - not re-read while running
        - ./config/conf/:/etc/traefik/conf/                       # additional config files that are read while running
        - ./config/certs/:/etc/traefik/certs/                     # where certificate info is kept
-       - ./logs:/var/log/traefik                                  # log files for crowdsec
+       - ./logs:/var/log/traefik                                  # log files for crowdsec to analyze
     environment:
        - CF_DNS_API_TOKEN=$CF_DNS_API_TOKEN
     labels:
