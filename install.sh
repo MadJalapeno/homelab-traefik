@@ -1,4 +1,4 @@
-
+echo "V 0.0.1"
 
 
 # colorful output
@@ -42,6 +42,8 @@ echo -n "Your Domain Name: "
 read domain_name
 echo -n "Your Cloudflare API Key: "
 read cloudflare_key
+echo -n "Email for Lets Encrypt: "
+read your-email
 echo
 
 #download install files
@@ -59,6 +61,7 @@ mv .env.demo .env
 # update cloudflare API key in .env file
 sed -i -e "s/cf-dns-replace-me/$cloudflare_key/g" .env
 sed -i -e "s/example.com/$domain_name/g" docker-compose.yml
+sed -i -e "s/your-email/$email-address/g" ./config/traefik.yml
 
 echo
 echo "S{CYAN}Installing ... ${END}"
