@@ -1,11 +1,11 @@
 http:
   routers:
-    traccar:
-      rule: "Host(`traccar.example.com`)"
-      service: traccar
+    demo:
+      rule: "Host(`demo.example.com`)"
+      service: demo
 
   services:
-    traccar:
+    demo:
       loadBalancer:
         servers:
           - url: "http://ip-address:port"
