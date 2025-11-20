@@ -39,22 +39,14 @@ else
     echo "Port 8080 free"
 fi
 
-echo "Checking docker installation"
-if command -v docker &> /dev/null; then
-    echo "Docker installation found"
-else
-    echo "Docker installation not found. Please install docker."
-    exit 1
-fi
-
 echo
 echo "Everything looks good"
 echo
-echo "Please enter your info"
+echo "${CYAN}Please enter your info"
 echo
 
 # Get info for installation
-echo "Your Domain Name for certificates: "
+echo -n "Your Domain Name for certificates: "
 read domain_name
 echo -n "Your Cloudflare API Key: "
 read cloudflare_key
@@ -62,7 +54,7 @@ echo -n "Email for Lets Encrypt: "
 read email_address
 echo
 
-echo "Downloading files ..."
+echo "${END}Downloading files ..."
 
 #download install files
 git clone https://github.com/MadJalapeno/homelab-traefik.git
@@ -87,18 +79,30 @@ echo
 docker compose up traefik -d
 
 # wait for things to start
-echo "Waiting for Traefik to start..."
+echo "Waiting for Traefik to finish installing ..."
 sleep 10
 
 docker compose up crowdsec -d 
 
-echo "Waiting for Crowdsec to start ..."
+echo "Waiting for Crowdsec to finish installing ..."
+echo -n "60 "
+sleep 10
+echo -n "50 "
+sleep 10
+echo -n "40 "
+sleep 10
+echo -n "30 "
+sleep 10
+echo -n "20 "
+sleep 10
+echo "10 "
 sleep 10
 
+echo
 echo "Getting Crowdsec API key"
 API_KEY = $(docker exec crowdsec cscli bouncers add traefik-bouncer)
 
 echo "API Key :"
 echo $API_KEY
 
-docker compose down
+#docker compose down

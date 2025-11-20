@@ -46,7 +46,7 @@ services:
     volumes:
       - ./../crowdsec/config:/etc/crowdsec
       - ./../crowdsec/data:/var/lib/crowdsec/data
-      - ./traefik/logs:/var/log/traefik:ro  # Point to your Traefik logs directory
+      - ./logs:/var/log/traefik:ro  # Point to your Traefik logs directory
     labels:
       - "traefik.enable=false"
 
