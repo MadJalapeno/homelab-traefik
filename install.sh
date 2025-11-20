@@ -51,9 +51,10 @@ echo
 echo "Everything looks good"
 echo
 echo "Please enter your info"
+echo
 
 # Get info for installation
-echo -n "Your Domain Name for certificates: "
+echo "Your Domain Name for certificates: "
 read domain_name
 echo -n "Your Cloudflare API Key: "
 read cloudflare_key
@@ -86,19 +87,18 @@ echo
 docker compose up traefik -d
 
 # wait for things to start
-echo "Waiting ..."
+echo "Waiting for Traefik to start..."
 sleep 10
 
 docker compose up crowdsec -d 
 
-echo "Still Waiting ..."
-sleep 10
-echo "Alsmost Done ..."
+echo "Waiting for Crowdsec to start ..."
 sleep 10
 
 echo "Getting Crowdsec API key"
 API_KEY = `docker exec crowdsec cscli bouncers add traefik-bouncer`
 
+echo "API Key :"
 echo $API_KEY
 
 docker compose down
