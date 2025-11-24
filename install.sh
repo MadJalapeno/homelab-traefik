@@ -171,7 +171,7 @@ docker network create proxy 2>/dev/null && echo "${GREEN}Network 'proxy' created
 echo
 
 
-cd traefik
+#cd traefik
 echo "${CYAN}Starting Traefik...${END}"
 docker compose up traefik -d
 
@@ -183,7 +183,7 @@ echo
 echo "${CYAN}Starting CrowdSec...${END}"
 docker compose up crowdsec -d
 
-echo "Waiting for CrowdSec to initialize (60 seconds)..."
+echo "Waiting for CrowdSec to initialize before we grab an API key(60 seconds)..."
 for i in 60 50 40 30 20 10; do
     echo -n "$i "
     sleep 10
@@ -247,8 +247,8 @@ echo "│           ├── README.md          # How to use dynamic configs"
 echo "│           └── *.yml              # Add your service configs here"
 echo "└── crowdsec/"
 echo "    ├── config/           # CrowdSec configuration"
-echo "    ├── data/             # CrowdSec data"
-echo "    └── acquis.yaml       # Log acquisition config"
+echo "    │   └── acquis.yaml   # Log acquisition config"
+echo "    └── data/             # CrowdSec data"
 echo
 echo "${CYAN}Certificate Information:${END}"
 echo "  Location: ${YELLOW}$install_dir/traefik/config/certs/acme.json${END}"

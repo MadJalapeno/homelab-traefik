@@ -1,6 +1,6 @@
 # Traefik Dynamic Configuration Directory
 
-This directory is monitored by Traefik for configuration changes in real-time.
+This directory is monitored by Traefik for configuration changes in real-time. You can have as many files as you want which makes managing them easier.
 
 ## How to Use
 
