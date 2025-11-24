@@ -209,7 +209,7 @@ echo
 
 # Add the API key to the .env file
 if grep -q "CROWDSEC_BOUNCER_API_KEY" .env; then
-    sed -i "s/CROWDSEC_BOUNCER_API_KEY=.*/CROWDSEC_BOUNCER_API_KEY=$API_KEY/" .env
+    sed -i "s/cs-bouncer-key/$API_KEY/g" .env
 else
     echo "CROWDSEC_BOUNCER_API_KEY=$API_KEY" >> .env
 fi
