@@ -41,7 +41,7 @@ services:
       - COLLECTIONS=crowdsecurity/traefik crowdsecurity/http-cve
       - GID=1000
     volumes:
-      - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
+      - ./crowdsec/config/acquis.yaml:/etc/crowdsec/acquis.yaml
       - ./crowdsec/config:/etc/crowdsec
       - ./crowdsec/data:/var/lib/crowdsec/data
       - ./logs:/var/log/traefik:ro  # Point to your Traefik logs directory

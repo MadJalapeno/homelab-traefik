@@ -148,20 +148,19 @@ echo
 echo "${CYAN}Configuring files with your information...${END}"
 
 # Update .env file
-mv traefik/.env.demo traefik/.env
+mv .env.demo .env
 echo "Updating .env file"
-sed -i "s/cf-dns-replace-me/$cloudflare_key/g" traefik/.env
-sed -i "s/your-token-here/$cloudflare_key/g" traefik/.env
+sed -i "s/cf-dns-replace-me/$cloudflare_key/g" .env
+sed -i "s/your-token-here/$cloudflare_key/g" .env
 
 # Update docker-compose.yml
 echo "Updating docker-compose.yml"
-sed -i "s/example.com/$domain_name/g" traefik/docker-compose.yml
+sed -i "s/example.com/$domain_name/g" docker-compose.yml
 
-# Update traefik config if it exists
-if [ -f traefik/config/traefik.yml ]; then
-    sed -i "s/example.com/$domain_name/g" traefik/config/traefik.yml
-    sed -i "s/your-email/$email_address/g" traefik/config/traefik.yml
-fi
+# Update traefik config
+sed -i "s/example.com/$domain_name/g" traefik/config/traefik.yml
+sed -i "s/your-email/$email_address/g" traefik/config/traefik.yml
+
 
 echo "${GREEN}Configuration complete${END}"
 echo
