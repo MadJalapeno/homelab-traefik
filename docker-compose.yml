@@ -6,7 +6,7 @@ services:
     security_opt: 
       - no-new-privileges:true
     networks:
-      - proxy
+      - traefik-proxy
     ports: 
       - 80:80
       - 443:443
@@ -36,7 +36,7 @@ services:
     container_name: crowdsec
     restart: unless-stopped
     networks:
-      - proxy
+      - traefik-proxy
     environment:
       - COLLECTIONS=crowdsecurity/traefik crowdsecurity/http-cve
       - GID=1000
@@ -69,5 +69,5 @@ services:
       - "traefik.enable=false"
       
 networks:
-  proxy:
+  traefik-proxy:
     external: true
