@@ -167,7 +167,7 @@ echo
 
 # Create the proxy network if it doesn't exist
 echo "${CYAN}Creating Docker network...${END}"
-docker network create proxy 2>/dev/null && echo "${GREEN}Network 'proxy' created${END}" || echo "${YELLOW}Network 'proxy' already exists${END}"
+docker network create proxy 2>/dev/null && echo "${GREEN}Network 'traefik-proxy' created${END}" || echo "${YELLOW}Network 'traefik-proxy' already exists${END}"
 echo
 
 
